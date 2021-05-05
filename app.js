@@ -102,8 +102,17 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
   // update the UI
   document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
+  // maximális elérhető pontszám megadása
+  let input = document.querySelector('.finalScore').value;
+  let finalScore;
+  if (input) {
+    finalScore = input;
+  } else {
+    finalScore = 50;
+  }
+
   // ellenőrizzük hogy van e nyertes:
-  if (scores[activePlayer] >= 20) {
+  if (scores[activePlayer] >= finalScore) {
     // játék vége
     document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
     document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
